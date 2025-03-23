@@ -1,22 +1,18 @@
 #ifndef Button_h
 #define Button_h
 #include <SFML/Graphics.hpp>
-#include <SFML/System/Vector2.hpp>
 
+const std::string font_name = "JetBrainsMono-Regular.ttf";
 const int default_size_char = 10;
 const float default_side = 20;
+
+sf::Font font(font_name);
 
 class myButton {
 
 public:
-  myButton(sf::Font font, sf::Text text, sf::RectangleShape rectangle) {
-    _font = font;
-    _text = text;
+  myButton(sf::Text text(font), sf::RectangleShape rectangle) {
     _rectangle = rectangle;
-  }
-  void SetFont(const std::string font_name) {
-    _font.loadFromFile(font_name);
-    _text.setFont(_font);
   }
   void SetColor(sf::Color rect_color, sf::Color text_color) {
     _text.setFillColor(text_color);
@@ -26,9 +22,9 @@ public:
     _rectangle.setSize(sf::Vector2<float>(default_side, default_side));
     _text.setCharacterSize(default_size_char);
   }
-  void SetPos(float x, float y) {
-    _rectangle.setPosition(x, y);
-    _text.setPosition(x, y);
+  void SetPos(sf::Vector2f pos) {
+    _rectangle.setPosition(pos);
+    _text.setPosition(pos);
   }
   void SetText(const sf::String &string) { _text.setString(string); }
   sf::String GetString() { return _text.getString(); }
@@ -36,11 +32,12 @@ public:
   sf::RectangleShape GetShape() { return _rectangle; }
 
 private:
-  sf::Font _font;
   sf::Text _text;
   sf::RectangleShape _rectangle;
 };
 
-// myButton CreateButton()
+myButton CreateButton(const float x, const float y, const std::string font_name,
+                      sf::String letter, sf::Color text = sf::Color::White,
+                      sf::Color shape = sf::Color::Black);
 
 #endif
