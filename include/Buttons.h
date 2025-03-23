@@ -1,24 +1,23 @@
 #ifndef Button_h
 #define Button_h
 #include <SFML/Graphics.hpp>
+#include <SFML/Graphics/RectangleShape.hpp>
 
-const std::string font_name = "JetBrainsMono-Regular.ttf";
-const int default_size_char = 10;
-const float default_side = 20;
-
-sf::Font font(font_name);
+const int default_size_char = 30;
+const float default_side = 50;
 
 class myButton {
 
 public:
-  myButton(sf::Text text(font), sf::RectangleShape rectangle) {
+  myButton(sf::Text t, sf::RectangleShape rectangle) : _text(t) {
+    _text = t;
     _rectangle = rectangle;
   }
   void SetColor(sf::Color rect_color, sf::Color text_color) {
     _text.setFillColor(text_color);
     _rectangle.setFillColor(rect_color);
   }
-  void SetSize(float h, float w) {
+  void SetSize() {
     _rectangle.setSize(sf::Vector2<float>(default_side, default_side));
     _text.setCharacterSize(default_size_char);
   }
