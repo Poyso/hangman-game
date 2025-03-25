@@ -2,8 +2,15 @@
 #define Button_h
 #include <SFML/Graphics.hpp>
 
+// Centering the text
+const float text_offset_x = 25;
+const float text_offset_y = 10;
+
+// Font name
+const std::string font_name = "JetBrainsMono-Regular.ttf";
+// Sizes of the button
 const int default_size_char = 35;
-const float default_side = 70;
+const float default_side = 70.f;
 
 class myButton {
 
@@ -17,14 +24,14 @@ public:
     _rectangle.setFillColor(rect_color);
   }
   void SetSize() {
-    _rectangle.setSize(sf::Vector2<float>(default_side, default_side));
+    _rectangle.setSize({default_side, default_side});
     _text.setCharacterSize(default_size_char);
   }
   void SetPos(sf::Vector2f ShapePos, sf::Vector2f TextPos) {
     _rectangle.setPosition(ShapePos);
     _text.setPosition(TextPos);
   }
-  void SetText(const sf::String &string) { _text.setString(string); }
+  void SetText(const sf::String string) { _text.setString(string); }
   sf::String GetString() { return _text.getString(); }
   sf::Text GetText() { return _text; }
   sf::RectangleShape GetShape() { return _rectangle; }
@@ -34,8 +41,6 @@ private:
   sf::RectangleShape _rectangle;
 };
 
-myButton CreateButton(const float x, const float y, const std::string font_name,
-                      sf::String letter, sf::Color text = sf::Color::White,
-                      sf::Color shape = sf::Color::Black);
+myButton CreateButton(float x, float y, sf::String letter);
 
 #endif
