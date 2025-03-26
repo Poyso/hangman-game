@@ -1,4 +1,5 @@
 #include "Buttons.h"
+#include <SFML/Graphics/RenderWindow.hpp>
 
 static sf::Font ttf(font_name);
 
@@ -12,6 +13,26 @@ myButton CreateButton(const float x, const float y, sf::String letter) {
   btn.SetColor(sf::Color::White, sf::Color::Black);
 
   return btn;
+}
+
+void Render(sf::RenderWindow *window, myButton b) {
+  if (b.isVisible()) {
+    window->draw(b.GetShape());
+    window->draw(b.GetText());
+  }
+}
+
+sf::String ButtonClicked(sf::RenderWindow *window, myButton *b) {
+  if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
+    sf::FloatRect bounds = b->GetShape().getGlobalBounds();
+    sf::Vector2f mouse_pos =
+        window->mapPixelToCoords(sf::Mouse::getPosition(*window));
+    if (bounds.contains(mouse_pos)) {
+      b->Clicked();
+      return b->GetString();
+    }
+  }
+  return "0";
 }
 
 /*

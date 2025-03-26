@@ -1,6 +1,7 @@
 #ifndef Button_h
 #define Button_h
 #include <SFML/Graphics.hpp>
+#include <SFML/Graphics/RenderWindow.hpp>
 #include <optional>
 
 // Centering the text
@@ -33,6 +34,8 @@ public:
     _rectangle.setPosition(ShapePos);
     _text.value().setPosition(TextPos);
   }
+  void Clicked() { is_visible = false; }
+  bool isVisible() { return is_visible; }
   void SetText(const sf::String string) { _text.value().setString(string); }
   sf::String GetString() { return _text.value().getString(); }
   sf::Text &GetText() { return _text.value(); }
@@ -41,10 +44,10 @@ public:
 private:
   std::optional<sf::Text> _text;
   sf::RectangleShape _rectangle;
+  bool is_visible = true;
 };
 
 myButton CreateButton(const float x, const float y, sf::String letter);
-
-void template_buttons();
-
+void Render(sf::RenderWindow *window, myButton b);
+sf::String ButtonClicked(sf::RenderWindow *window, myButton *b);
 #endif
