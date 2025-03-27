@@ -22,17 +22,16 @@ void Render(sf::RenderWindow *window, myButton b) {
   }
 }
 
-sf::String ButtonClicked(sf::RenderWindow *window, myButton *b) {
+void ButtonClicked(sf::RenderWindow *window, myButton *b, sf::String *ch) {
   if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
     sf::FloatRect bounds = b->GetShape().getGlobalBounds();
     sf::Vector2f mouse_pos =
         window->mapPixelToCoords(sf::Mouse::getPosition(*window));
     if (bounds.contains(mouse_pos)) {
       b->Clicked();
-      return b->GetString();
+      *ch = b->GetString();
     }
   }
-  return "0";
 }
 
 /*

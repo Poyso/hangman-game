@@ -3,6 +3,7 @@
 #include <SFML/Graphics/Rect.hpp>
 #include <SFML/System/Vector2.hpp>
 #include <SFML/Window/Mouse.hpp>
+#include <iostream>
 
 int main() {
   auto window =
@@ -16,7 +17,7 @@ int main() {
       }
     }
     window.clear();
-    chr = ButtonClicked(&window, &test_btn);
+    ButtonClicked(&window, &test_btn, &chr);
     Render(&window, test_btn);
     window.display();
   }
