@@ -1,4 +1,4 @@
-#include "Buttons.h"
+
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/Rect.hpp>
 #include <SFML/System/Vector2.hpp>
@@ -8,8 +8,11 @@
 int main() {
   auto window =
       sf::RenderWindow(sf::VideoMode({1920u, 1080u}), "CMake SFML Project");
-  myButton test_btn = CreateButton(200, 200, "x");
-  sf::String chr;
+  sf::CircleShape shape(50.f);
+  shape.setFillColor(sf::Color::Black);
+  shape.setOutlineThickness(10.f);
+  shape.setOutlineColor(sf::Color::White);
+  shape.setPosition({400,250});
   while (window.isOpen()) {
     while (const std::optional event = window.pollEvent()) {
       if (event->is<sf::Event::Closed>()) {
@@ -17,8 +20,7 @@ int main() {
       }
     }
     window.clear();
-    ButtonClicked(&window, &test_btn, &chr);
-    Render(&window, test_btn);
+    window.draw(shape);
     window.display();
   }
 }
