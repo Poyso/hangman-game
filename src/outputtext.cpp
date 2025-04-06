@@ -30,7 +30,7 @@ std::vector<Output> createWordToGuess(sf::String word) {
 
 sf::String RandomWord() {
   sf::String word;
-  std::ifstream file;
+  std::ifstream file; // open file read only
 
   return word;
 }
