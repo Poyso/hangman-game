@@ -9,7 +9,7 @@ const float text_offset_x = 25;
 const float text_offset_y = 10;
 
 // Font name
-const std::string font_name = "JetBrainsMono-Regular.ttf";
+const std::string font_name = "../JetBrainsMono-Regular.ttf";
 // Sizes of the button
 const int default_size_char = 35;
 const float default_side = 70.f;

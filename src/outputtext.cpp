@@ -1,7 +1,7 @@
 #include "outputtext.h"
-#include <iostream>
+#include <fstream>
 
-const std::string font_name = "JetBrainsMono-Regular.ttf";
+const std::string font_name = "../JetBrainsMono-Regular.ttf";
 static sf::Font ttf(font_name);
 
 void RenderTxt(sf::RenderWindow *window, std::vector<Output> o) {
@@ -26,4 +26,11 @@ std::vector<Output> createWordToGuess(sf::String word) {
     offset += default_offset_value;
   }
   return v;
+}
+
+sf::String RandomWord() {
+  sf::String word;
+  std::ifstream file;
+
+  return word;
 }

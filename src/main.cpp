@@ -1,9 +1,11 @@
+#include "Buttons.h"
 #include "outputtext.h"
 
 int main() {
   auto window =
       sf::RenderWindow(sf::VideoMode({1920u, 1080u}), "CMake SFML Project");
-  std::vector<Output> word = createWordToGuess("TA");
+  // std::vector<Output> word = createWordToGuess("TA");
+  myButton b = CreateButton(200, 200, "A");
   while (window.isOpen()) {
     while (const std::optional event = window.pollEvent()) {
       if (event->is<sf::Event::Closed>()) {
@@ -11,7 +13,7 @@ int main() {
       }
     }
     window.clear();
-    RenderTxt(&window, word);
+    Render(&window, b);
     window.display();
   }
 }
