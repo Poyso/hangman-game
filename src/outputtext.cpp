@@ -1,5 +1,8 @@
 #include "outputtext.h"
+#include <cstdio>
 #include <fstream>
+#include <iostream>
+#include <string>
 
 const std::string font_name = "../JetBrainsMono-Regular.ttf";
 static sf::Font ttf(font_name);
@@ -29,8 +32,21 @@ std::vector<Output> createWordToGuess(sf::String word) {
 }
 
 sf::String RandomWord() {
-  sf::String word;
-  std::ifstream file; // open file read only
+  char word[256];
+  std::string x;
+  std::ifstream file;
+  int n;
+  const std::string filepath = "../../words.txt"; // open file read only
+  file.open(filepath);
+  if (file.is_open()) {
+    std::cout << "File Opened" << std::endl;
+    file.getline(word, 256);
+    x = word;
+    n = std::stoi(x);
+    std::cout << n;
+    file.close();
+  } else
+    std::cout << "Unable to open file";
 
   return word;
 }
