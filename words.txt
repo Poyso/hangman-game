@@ -1,4 +1,4 @@
-160
-cane
-cinghiale
-scarafaggio
+3
+CANE
+CINGHIALE
+FARFALLA
