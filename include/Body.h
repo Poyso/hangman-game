@@ -15,18 +15,18 @@ const float head_thickness = 10.f;
 // Dx_arm settings
 const float Dx_arm_h = 5;
 const float Dx_arm_base = 150;
-const float Dx_arm_degrees = 30;
+const float Dx_arm_degrees = -30;
 const float Dx_arm_thickness = 5;
 const float Dx_arm_offset_x = 547;
-const float Dx_arm_offset_y = 310;
+const float Dx_arm_offset_y = 330;
 //
 // Sx_Arm settings
 const float Sx_arm_h = 5;
 const float Sx_arm_base = 150;
-const float Sx_arm_degrees = -30;
+const float Sx_arm_degrees = 30;
 const float Sx_arm_thickness = 5;
 const float Sx_arm_offset_x = 547;
-const float Sx_arm_offset_y = 310;
+const float Sx_arm_offset_y = 330;
 //
 // body settings
 const float Body_height = 5;
@@ -38,7 +38,7 @@ const float Body_offset_y = 310;
 // Dx_leg settings
 const float Dx_leg_h = 5;
 const float Dx_leg_base = 150;
-const float Dx_leg_degrees = -30;
+const float Dx_leg_degrees = 30;
 const float Dx_leg_thickness = 5;
 const float Dx_leg_offset_x = 547;
 const float Dx_leg_offset_y = 560;
@@ -55,15 +55,15 @@ const float Sx_leg_offset_y = 560;
 class body
 {
 public:
-    body(sf::CircleShape head, std::string s)
+    body(sf::CircleShape head)
     {
         this->head = head;
-        this->visible = false;
+        this->visible = true;
     }
-    body(sf::RectangleShape body_part, std::string s)
+    body(sf::RectangleShape body_part)
     {
         this->body_part = body_part;
-        this->visible = false;
+        this->visible = true;
     }
 
     bool isVisible()
@@ -76,12 +76,12 @@ public:
         this->visible = visible;
     }
 
-    sf::CircleShape getShape(sf::CircleShape head)
+    sf::CircleShape getCircle()
     {
         return this->head;
     }
 
-    sf::RectangleShape getShape(sf::RectangleShape body_part)
+    sf::RectangleShape getrect()
     {
         return this->body_part;
     }
@@ -92,7 +92,7 @@ private:
     bool visible;
 };
 
-void render(sf::RenderWindow, body);
+void render(sf::RenderWindow *, std::vector<body>, char);
 sf::CircleShape createHead();
 sf::RectangleShape createDx_arm();
 sf::RectangleShape createSx_arm();

@@ -2,11 +2,18 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 
-void render(sf::RenderWindow window, body x)
+void render(sf::RenderWindow *window, std::vector<body> stickman, char ch)
 {
-    if (x.isVisible())
+    for (int i = 0; i < 6; i++)
     {
-        window.draw(x.getShape());
+        if (stickman[i].isVisible() && ch == 'h')
+        {
+            window->draw(stickman[i].getCircle());
+        }
+        else if (stickman[i].isVisible() && ch == 'r')
+        {
+            window->draw(stickman[i].getrect());
+        }
     }
 }
 
@@ -24,22 +31,22 @@ sf::CircleShape createHead()
 sf::RectangleShape createDx_arm()
 {
     sf::RectangleShape Dx_arm;
-    Dx_arm.setSize(sf::Vector2f(Dx_arm_base, Dx_arm_h));
+    Dx_arm.setSize(sf::Vector2f(Dx_arm_h, Dx_arm_base));
     Dx_arm.setOutlineThickness(Dx_arm_thickness);
     Dx_arm.setRotation(sf::degrees(Dx_arm_degrees));
     Dx_arm.setOutlineColor(sf::Color::White);
-    rect.setPosition({Dx_arm_offset_x, Dx_arm_offset_y});
+    Dx_arm.setPosition({Dx_arm_offset_x, Dx_arm_offset_y});
     return Dx_arm;
 }
 
 sf::RectangleShape createSx_arm()
 {
     sf::RectangleShape Sx_arm;
-    Sx_arm.setSize(sf::Vector2f(Sx_arm_base, Sx_arm_h));
+    Sx_arm.setSize(sf::Vector2f(Sx_arm_h, Sx_arm_base));
     Sx_arm.setOutlineThickness(Sx_arm_thickness);
     Sx_arm.setRotation(sf::degrees(Sx_arm_degrees));
     Sx_arm.setOutlineColor(sf::Color::White);
-    rect.setPosition({Sx_arm_offset_x, Sx_arm_offset_y});
+    Sx_arm.setPosition({Sx_arm_offset_x, Sx_arm_offset_y});
     return Sx_arm;
 }
 
@@ -77,12 +84,18 @@ sf::RectangleShape createDx_leg()
 
 std::vector<body> Create_stickman()
 {
-    body head = createHead();
-    body Body = createBody();
-    body Dx_arm = createDx_arm();
-    body Sx_arm = createSx_arm();
-    body Dx_leg = createDx_leg();
-    body Sx_leg = createSx_leg();
-    std::vector<body> Stickman = {head, Body, Dx_arm, Sx_arm, Dx_leg, Sx_leg};
+    sf::CircleShape circle = createHead();
+    body head = body(circle);
+    sf::RectangleShape part = createBody();
+    body stick = body(part);
+    sf::RectangleShape part2 = createDx_arm();
+    body Dx_arm = body(part2);
+    sf::RectangleShape part3 = createSx_arm();
+    body Sx_arm = body(part3);
+    sf::RectangleShape part4 = createDx_leg();
+    body Dx_leg = body(part4);
+    sf::RectangleShape part5 = createSx_leg();
+    body Sx_leg = body(part5);
+    std::vector<body> Stickman = {head, stick, Dx_arm, Sx_arm, Dx_leg, Sx_leg};
     return Stickman;
 }

@@ -67,6 +67,8 @@ int main()
     window.draw(Dx_leg);
     window.draw(Sx_leg);*/
     std::vector<body> stickman = Create_stickman();
+    render(&window, stickman, 'h');
+    render(&window, stickman, 'r');
     window.display();
   }
 }
