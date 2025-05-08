@@ -1,5 +1,4 @@
 #include "Buttons.h"
-#include <SFML/Graphics/RenderWindow.hpp>
 
 static sf::Font ttf(font_name);
 

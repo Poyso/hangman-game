@@ -1,15 +1,13 @@
 #include "Buttons.h"
-#include <SFML/Graphics.hpp>
-#include <SFML/Graphics/Rect.hpp>
-#include <SFML/System/Vector2.hpp>
-#include <SFML/Window/Mouse.hpp>
-#include <iostream>
+#include "outputtext.h"
 
 int main() {
   auto window =
       sf::RenderWindow(sf::VideoMode({1920u, 1080u}), "CMake SFML Project");
-  myButton test_btn = CreateButton(200, 200, "x");
-  sf::String chr;
+  // std::vector<Output> word = createWordToGuess("TA");
+  sf::String word = RandomWord();
+  std::vector<Output> word_to_guess = createWordToGuess(word);
+
   while (window.isOpen()) {
     while (const std::optional event = window.pollEvent()) {
       if (event->is<sf::Event::Closed>()) {
@@ -17,8 +15,7 @@ int main() {
       }
     }
     window.clear();
-    ButtonClicked(&window, &test_btn, &chr);
-    Render(&window, test_btn);
+    RenderTxt(&window, word_to_guess);
     window.display();
   }
 }
