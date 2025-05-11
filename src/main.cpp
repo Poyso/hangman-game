@@ -49,6 +49,32 @@ int main()
   Sx_leg.setOutlineColor(sf::Color::White);
   Sx_leg.setPosition({547, 560});
   // stand
+  sf::RectangleShape base;
+  base.setSize(sf::Vector2f(15, 250));
+  base.setOutlineThickness(5);
+  base.setRotation(sf::degrees(90));
+  base.setOutlineColor(sf::Color::White);
+  base.setPosition({347, 680});
+
+  sf::RectangleShape bodys;
+  bodys.setSize(sf::Vector2f(15, 650));
+  bodys.setOutlineThickness(5);
+  bodys.setOutlineColor(sf::Color::White);
+  bodys.setPosition({220, 40});
+
+  sf::RectangleShape rect2;
+  rect2.setSize(sf::Vector2f(15, 320));
+  rect2.setOutlineThickness(5);
+  rect2.setRotation(sf::degrees(90));
+  rect2.setOutlineColor(sf::Color::White);
+  rect2.setPosition({550, 40});
+
+  sf::RectangleShape rect3;
+  rect3.setSize(sf::Vector2f(5, 150));
+  rect3.setOutlineThickness(5);
+  rect3.setOutlineColor(sf::Color::White);
+  rect3.setPosition({547, 40});
+
   while (window.isOpen())
   {
     while (const std::optional event = window.pollEvent())
@@ -60,13 +86,18 @@ int main()
     }
     window.clear();
     /*
-    window.draw(shape);
+    window.draw(base);
+    window.draw(bodys);
+    window.draw(rect2);
+    window.draw(rect3);
     window.draw(rect);
     window.draw(Sx_arm);
     window.draw(Dx_arm);
     window.draw(Dx_leg);
     window.draw(Sx_leg);*/
     std::vector<body> stickman = Create_stickman();
+    std::vector<sf::RectangleShape> stands = stand();
+    render_stand(&window, stands);
     render(&window, stickman, 'h');
     render(&window, stickman, 'r');
     window.display();

@@ -50,6 +50,38 @@ const float Sx_leg_degrees = -30;
 const float Sx_leg_thickness = 5;
 const float Sx_leg_offset_x = 547;
 const float Sx_leg_offset_y = 560;
+//
+// stand settings
+
+// base
+const float base_h = 15;
+const float base_base = 250;
+const float base_degrees = 90;
+const float base_thickness = 5;
+const float base_offset_x = 347;
+const float base_offset_y = 680;
+
+// bodys
+const float bodys_h = 15;
+const float bodys_base = 650;
+const float bodys_thickness = 5;
+const float bodys_offset_x = 220;
+const float bodys_offset_y = 40;
+
+// rect2
+const float rect2_h = 15;
+const float rect2_base = 320;
+const float rect2_degrees = 90;
+const float rect2_thickness = 5;
+const float rect2_offset_x = 550;
+const float rect2_offset_y = 40;
+
+// rect3
+const float rect3_h = 5;
+const float rect3_base = 150;
+const float rect3_thickness = 5;
+const float rect3_offset_x = 547;
+const float rect3_offset_y = 40;
 // end
 
 class body
@@ -93,6 +125,7 @@ private:
 };
 
 void render(sf::RenderWindow *, std::vector<body>, char);
+void render_stand(sf::RenderWindow *, std::vector<sf::RectangleShape>);
 sf::CircleShape createHead();
 sf::RectangleShape createDx_arm();
 sf::RectangleShape createSx_arm();
@@ -100,5 +133,6 @@ sf::RectangleShape createBody();
 sf::RectangleShape createSx_leg();
 sf::RectangleShape createDx_leg();
 std::vector<body> Create_stickman();
+std::vector<sf::RectangleShape> stand();
 
 #endif
