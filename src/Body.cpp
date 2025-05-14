@@ -2,10 +2,12 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 
-void render(sf::RenderWindow *window, std::vector<body> stickman, char ch) {
+void RenderStickman(sf::RenderWindow *window, std::vector<body> stickman) {
+  char ch = 'h';
   for (int i = 0; i < 6; i++) {
     if (stickman[i].isVisible() && ch == 'h') {
       window->draw(stickman[i].getCircle());
+      ch = 'r';
     } else if (stickman[i].isVisible() && ch == 'r') {
       window->draw(stickman[i].getrect());
     }

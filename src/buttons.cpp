@@ -35,35 +35,34 @@ void ButtonClicked(sf::RenderWindow *window, myButton *b, sf::String *ch) {
   }
 }
 
-std::vector<myButton> CreateKeyboard(const float x, const float y,
-                                     sf::String letter) {
+std::vector<myButton> CreateKeyboard() {
   std::vector<myButton> keyboard;
-  myButton button_a = CreateButton(150, 700, "a");
-  myButton button_b = CreateButton(250, 700, "b");
-  myButton button_c = CreateButton(350, 700, "c");
-  myButton button_d = CreateButton(450, 700, "d");
-  myButton button_e = CreateButton(550, 700, "e");
-  myButton button_f = CreateButton(650, 700, "f");
-  myButton button_g = CreateButton(750, 700, "g");
-  myButton button_h = CreateButton(850, 700, "h");
-  myButton button_i = CreateButton(950, 700, "i");
-  myButton button_j = CreateButton(1050, 700, "j");
-  myButton button_k = CreateButton(1150, 700, "k");
-  myButton button_l = CreateButton(1250, 700, "l");
-  myButton button_m = CreateButton(1350, 700, "m");
-  myButton button_n = CreateButton(1450, 700, "n");
-  myButton button_o = CreateButton(1550, 700, "o");
-  myButton button_p = CreateButton(1650, 700, "p");
-  myButton button_q = CreateButton(1750, 700, "q");
-  myButton button_r = CreateButton(550, 800, "r");
-  myButton button_s = CreateButton(650, 800, "s");
-  myButton button_t = CreateButton(750, 800, "t");
-  myButton button_u = CreateButton(850, 800, "u");
-  myButton button_v = CreateButton(950, 800, "v");
-  myButton button_w = CreateButton(1050, 800, "w");
-  myButton button_x = CreateButton(1150, 800, "x");
-  myButton button_y = CreateButton(1250, 800, "y");
-  myButton button_z = CreateButton(1350, 800, "z");
+  myButton button_a = CreateButton(150, 800, "a");
+  myButton button_b = CreateButton(250, 800, "b");
+  myButton button_c = CreateButton(350, 800, "c");
+  myButton button_d = CreateButton(450, 800, "d");
+  myButton button_e = CreateButton(550, 800, "e");
+  myButton button_f = CreateButton(650, 800, "f");
+  myButton button_g = CreateButton(750, 800, "g");
+  myButton button_h = CreateButton(850, 800, "h");
+  myButton button_i = CreateButton(950, 800, "i");
+  myButton button_j = CreateButton(1050, 800, "j");
+  myButton button_k = CreateButton(1150, 800, "k");
+  myButton button_l = CreateButton(1250, 800, "l");
+  myButton button_m = CreateButton(1350, 800, "m");
+  myButton button_n = CreateButton(1450, 800, "n");
+  myButton button_o = CreateButton(1550, 800, "o");
+  myButton button_p = CreateButton(1650, 800, "p");
+  myButton button_q = CreateButton(1750, 800, "q");
+  myButton button_r = CreateButton(550, 900, "r");
+  myButton button_s = CreateButton(650, 900, "s");
+  myButton button_t = CreateButton(750, 900, "t");
+  myButton button_u = CreateButton(850, 900, "u");
+  myButton button_v = CreateButton(950, 900, "v");
+  myButton button_w = CreateButton(1050, 900, "w");
+  myButton button_x = CreateButton(1150, 900, "x");
+  myButton button_y = CreateButton(1250, 900, "y");
+  myButton button_z = CreateButton(1350, 900, "z");
   keyboard.push_back(button_a);
   keyboard.push_back(button_b);
   keyboard.push_back(button_c);

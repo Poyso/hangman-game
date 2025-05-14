@@ -1,9 +1,9 @@
 #ifndef Body_h
 #define Body_h
 
-#include <iostream>
 #include <SFML/Graphics.hpp>
 #include <cstring>
+#include <iostream>
 #include <vector>
 
 // head settings
@@ -84,47 +84,32 @@ const float rect3_offset_x = 547;
 const float rect3_offset_y = 40;
 // end
 
-class body
-{
+class body {
 public:
-    body(sf::CircleShape head)
-    {
-        this->head = head;
-        this->visible = true;
-    }
-    body(sf::RectangleShape body_part)
-    {
-        this->body_part = body_part;
-        this->visible = true;
-    }
+  body(sf::CircleShape head) {
+    this->head = head;
+    this->visible = true;
+  }
+  body(sf::RectangleShape body_part) {
+    this->body_part = body_part;
+    this->visible = true;
+  }
 
-    bool isVisible()
-    {
-        return this->visible;
-    }
+  bool isVisible() { return this->visible; }
 
-    void setVisible(bool visible)
-    {
-        this->visible = visible;
-    }
+  void setVisible(bool visible) { this->visible = visible; }
 
-    sf::CircleShape getCircle()
-    {
-        return this->head;
-    }
+  sf::CircleShape getCircle() { return this->head; }
 
-    sf::RectangleShape getrect()
-    {
-        return this->body_part;
-    }
+  sf::RectangleShape getrect() { return this->body_part; }
 
 private:
-    sf::CircleShape head;
-    sf::RectangleShape body_part;
-    bool visible;
+  sf::CircleShape head;
+  sf::RectangleShape body_part;
+  bool visible;
 };
 
-void render(sf::RenderWindow *, std::vector<body>, char);
+void RenderStickman(sf::RenderWindow *, std::vector<body>);
 void render_stand(sf::RenderWindow *, std::vector<sf::RectangleShape>);
 sf::CircleShape createHead();
 sf::RectangleShape createDx_arm();
