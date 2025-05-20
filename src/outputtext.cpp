@@ -11,7 +11,7 @@ static sf::Font ttf(font_name);
 void RenderTxt(sf::RenderWindow *window, std::vector<Output> o) {
   for (int i = 0; i < o.size(); i++) {
     window->draw(o[i].GetUnderline());
-    if (!o[i].GetIsVisible())
+    if (o[i].GetIsVisible())
       window->draw(o[i].GetText());
   }
 }

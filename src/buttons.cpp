@@ -1,4 +1,5 @@
 #include "Buttons.h"
+#include <SFML/Window/Mouse.hpp>
 
 static sf::Font ttf(font_name);
 

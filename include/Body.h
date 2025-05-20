@@ -88,16 +88,16 @@ class body {
 public:
   body(sf::CircleShape head) {
     this->head = head;
-    this->visible = true;
+    this->visible = false;
   }
   body(sf::RectangleShape body_part) {
     this->body_part = body_part;
-    this->visible = true;
+    this->visible = false;
   }
 
   bool isVisible() { return this->visible; }
 
-  void setVisible(bool visible) { this->visible = visible; }
+  void show() { this->visible = true; }
 
   sf::CircleShape getCircle() { return this->head; }
 
