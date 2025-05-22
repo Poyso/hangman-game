@@ -1,7 +1,7 @@
 #include "Buttons.h"
-#include "Game.h"
 #include "outputtext.h"
 #include <Body.h>
+#include <iostream>
 
 int main() {
   auto window =
@@ -13,6 +13,7 @@ int main() {
   std::vector<body> stickman = Create_stickman();
   std::vector<sf::RectangleShape> st = stand();
   sf::String letter;
+  int errors = 0;
   while (window.isOpen()) {
     while (const std::optional event = window.pollEvent()) {
       if (event->is<sf::Event::Closed>()) {
@@ -46,7 +47,33 @@ int main() {
     ButtonClicked(&window, &keyboard[22], &letter);
     ButtonClicked(&window, &keyboard[23], &letter);
     ButtonClicked(&window, &keyboard[24], &letter);
-    game_loop(word_to_guess, stickman, keyboard, letter);
+    if (letter != "0") {
+      bool error_found = true;
+      for (int i = 0; i < word_to_guess.size(); i++) {
+        if (word_to_guess[i].GetString() == letter) {
+          word_to_guess[i].show();
+          error_found = false;
+        }
+      }
+      if (error_found) {
+        errors++;
+      }
+      std::cout << errors << std::endl;
+      switch (errors) {
+      case 1:
+        stickman[0].show();
+      case 2:
+        stickman[1].show();
+      case 3:
+        stickman[2].show();
+      case 4:
+        stickman[3].show();
+      case 5:
+        stickman[4].show();
+      case 6:
+        stickman[5].show();
+      }
+    }
     RenderTxt(&window, word_to_guess);
     Render(&window, keyboard);
     RenderStickman(&window, stickman);
