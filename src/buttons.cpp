@@ -1,4 +1,5 @@
 #include "Buttons.h"
+#include <SFML/Window/Event.hpp>
 #include <SFML/Window/Mouse.hpp>
 
 static sf::Font ttf(font_name);
@@ -24,8 +25,8 @@ void Render(sf::RenderWindow *window, std::vector<myButton> k) {
   }
 }
 
-void ButtonClicked(sf::RenderWindow *window, myButton *b, sf::String *ch) {
-  if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
+void ButtonClicked(sf::RenderWindow *window, myButton *b, std::string *ch) {
+  if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && b->isVisible()) {
     sf::FloatRect bounds = b->GetShape().getGlobalBounds();
     sf::Vector2f mouse_pos =
         window->mapPixelToCoords(sf::Mouse::getPosition(*window));

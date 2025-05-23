@@ -49,6 +49,6 @@ private:
 
 myButton CreateButton(const float x, const float y, sf::String letter);
 void Render(sf::RenderWindow *window, std::vector<myButton> b);
-void ButtonClicked(sf::RenderWindow *window, myButton *b, sf::String *ch);
+void ButtonClicked(sf::RenderWindow *window, myButton *b, std::string *ch);
 std::vector<myButton> CreateKeyboard();
 #endif

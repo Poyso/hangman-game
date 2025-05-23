@@ -113,17 +113,17 @@ std::vector<sf::RectangleShape> stand() {
 
 std::vector<body> Create_stickman() {
   sf::CircleShape circle = createHead();
-  body head = body(circle);
+  body head(circle);
   sf::RectangleShape part = createBody();
-  body stick = body(part);
+  body stick(part);
   sf::RectangleShape part2 = createDx_arm();
-  body Dx_arm = body(part2);
+  body Dx_arm(part2);
   sf::RectangleShape part3 = createSx_arm();
-  body Sx_arm = body(part3);
+  body Sx_arm(part3);
   sf::RectangleShape part4 = createDx_leg();
-  body Dx_leg = body(part4);
+  body Dx_leg(part4);
   sf::RectangleShape part5 = createSx_leg();
-  body Sx_leg = body(part5);
+  body Sx_leg(part5);
   std::vector<body> Stickman = {head, stick, Dx_arm, Sx_arm, Dx_leg, Sx_leg};
   return Stickman;
 }
