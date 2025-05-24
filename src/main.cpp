@@ -8,6 +8,14 @@ int main() {
   auto window =
       sf::RenderWindow(sf::VideoMode({1920u, 1080u}), "CMake SFML Project");
   // std::vector<Output> word = createWordToGuess("TA");
+  sf::Font font("../JetBrainsMono-Regular.ttf");
+  sf::Text winner_text(font, "Hai vinto!");
+  sf::Text loser_text(font, "Hai perso!");
+  loser_text.setPosition({1000, 200});
+  winner_text.setPosition({1000, 200});
+  winner_text.setCharacterSize(40);
+  loser_text.setCharacterSize(40);
+  bool game_over = false;
   sf::String word = RandomWord();
   std::vector<Output> word_to_guess = createWordToGuess(word);
   std::vector<myButton> keyboard = CreateKeyboard();
@@ -22,7 +30,7 @@ int main() {
       if (event->is<sf::Event::Closed>()) {
         window.close();
       }
-      if (event->is<sf::Event::MouseButtonPressed>()) {
+      if (event->is<sf::Event::MouseButtonPressed>() && !game_over) {
         ButtonClicked(&window, &keyboard[24], &letter);
         ButtonClicked(&window, &keyboard[0], &letter);
         ButtonClicked(&window, &keyboard[1], &letter);
@@ -49,6 +57,7 @@ int main() {
         ButtonClicked(&window, &keyboard[22], &letter);
         ButtonClicked(&window, &keyboard[23], &letter);
         ButtonClicked(&window, &keyboard[24], &letter);
+        ButtonClicked(&window, &keyboard[25], &letter);
       }
     }
     window.clear();
@@ -76,6 +85,13 @@ int main() {
         stickman[4].show(); // gamba sinistra
       else if (errors == 6)
         stickman[5].show(); // gamba destra
+    }
+    if (errors == 6) {
+      game_over = true;
+      window.draw(loser_text);
+    } else if (word_is_revelead(word_to_guess)) {
+      game_over = true;
+      window.draw(winner_text);
     }
     RenderTxt(&window, word_to_guess);
     Render(&window, keyboard);

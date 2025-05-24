@@ -2,7 +2,6 @@
 #define output_h
 
 #include <SFML/Graphics.hpp>
-#include <fstream>
 #include <vector>
 
 const float default_offset_value = 120;
@@ -43,5 +42,6 @@ private:
 void RenderTxt(sf::RenderWindow *, std::vector<Output>);
 std::vector<Output> createWordToGuess(sf::String word);
 sf::String RandomWord();
+bool word_is_revelead(std::vector<Output> word);
 
 #endif

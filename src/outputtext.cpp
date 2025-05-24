@@ -16,6 +16,13 @@ void RenderTxt(sf::RenderWindow *window, std::vector<Output> o) {
   }
 }
 
+bool word_is_revelead(std::vector<Output> word) {
+  for (int i = 0; i < word.size(); i++) {
+    if (!word[i].GetIsVisible())
+      return false;
+  }
+  return true;
+}
 std::vector<Output> createWordToGuess(sf::String word) {
   std::vector<Output> v;
   sf::RectangleShape r;

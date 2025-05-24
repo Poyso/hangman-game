@@ -81,6 +81,7 @@ std::vector<myButton> CreateKeyboard() {
   keyboard.push_back(button_n);
   keyboard.push_back(button_o);
   keyboard.push_back(button_p);
+  keyboard.push_back(button_r);
   keyboard.push_back(button_q);
   keyboard.push_back(button_s);
   keyboard.push_back(button_t);
