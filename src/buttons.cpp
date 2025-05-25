@@ -1,4 +1,6 @@
 #include "Buttons.h"
+#include <SFML/Window/Event.hpp>
+#include <SFML/Window/Mouse.hpp>
 
 static sf::Font ttf(font_name);
 
@@ -14,15 +16,17 @@ myButton CreateButton(const float x, const float y, sf::String letter) {
   return btn;
 }
 
-void Render(sf::RenderWindow *window, myButton b) {
-  if (b.isVisible()) {
-    window->draw(b.GetShape());
-    window->draw(b.GetText());
+void Render(sf::RenderWindow *window, std::vector<myButton> k) {
+  for (int i = 0; i < k.size(); i++) {
+    if (k[i].isVisible()) {
+      window->draw(k[i].GetShape());
+      window->draw(k[i].GetText());
+    }
   }
 }
 
-void ButtonClicked(sf::RenderWindow *window, myButton *b, sf::String *ch) {
-  if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
+void ButtonClicked(sf::RenderWindow *window, myButton *b, std::string *ch) {
+  if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && b->isVisible()) {
     sf::FloatRect bounds = b->GetShape().getGlobalBounds();
     sf::Vector2f mouse_pos =
         window->mapPixelToCoords(sf::Mouse::getPosition(*window));
@@ -33,100 +37,59 @@ void ButtonClicked(sf::RenderWindow *window, myButton *b, sf::String *ch) {
   }
 }
 
-/*
- *Button creation template
-  myButton button_a = CreateButton(150, 700, "a");
-  myButton button_b = CreateButton(250, 700, "b");
-  myButton button_c = CreateButton(350, 700, "c");
-  myButton button_d = CreateButton(450, 700, "d");
-  myButton button_e = CreateButton(550, 700, "e");
-  myButton button_f = CreateButton(650, 700, "f");
-  myButton button_g = CreateButton(750, 700, "g");
-  myButton button_h = CreateButton(850, 700, "h");
-  myButton button_i = CreateButton(950, 700, "i");
-  myButton button_j = CreateButton(1050, 700, "j");
-  myButton button_k = CreateButton(1150, 700, "k");
-  myButton button_l = CreateButton(1250, 700, "l");
-  myButton button_m = CreateButton(1350, 700, "m");
-  myButton button_n = CreateButton(1450, 700, "n");
-  myButton button_o = CreateButton(1550, 700, "o");
-  myButton button_p = CreateButton(1650, 700, "p");
-  myButton button_q = CreateButton(1750, 700, "q");
-  myButton button_r = CreateButton(550, 800, "r");
-  myButton button_s = CreateButton(650, 800, "s");
-  myButton button_t = CreateButton(750, 800, "t");
-  myButton button_u = CreateButton(850, 800, "u");
-  myButton button_v = CreateButton(950, 800, "v");
-  myButton button_w = CreateButton(1050, 800, "w");
-  myButton button_x = CreateButton(1150, 800, "x");
-  myButton button_y = CreateButton(1250, 800, "y");
-  myButton button_z = CreateButton(1350, 800, "z");
- *
- *  Print buttons template
-    window.draw(button_a.GetShape());
-    window.draw(button_a.GetText());
-    window.draw(button_b.GetShape());
-    window.draw(button_b.GetText());
-    window.draw(button_c.GetShape());
-    window.draw(button_c.GetText());
-    window.draw(button_d.GetShape());
-    window.draw(button_d.GetText());
-    window.draw(button_e.GetShape());
-    window.draw(button_e.GetText());
-    window.draw(button_f.GetShape());
-    window.draw(button_f.GetText());
-    window.draw(button_g.GetShape());
-    window.draw(button_g.GetText());
-    window.draw(button_h.GetShape());
-    window.draw(button_h.GetText());
-    window.draw(button_i.GetShape());
-    window.draw(button_i.GetText());
-    window.draw(button_j.GetShape());
-    window.draw(button_j.GetText());
-    window.draw(button_k.GetShape());
-    window.draw(button_k.GetText());
-    window.draw(button_l.GetShape());
-    window.draw(button_l.GetText());
-    window.draw(button_m.GetShape());
-    window.draw(button_m.GetText());
-    window.draw(button_n.GetShape());
-    window.draw(button_n.GetText());
-    window.draw(button_o.GetShape());
-    window.draw(button_o.GetText());
-    window.draw(button_p.GetShape());
-    window.draw(button_p.GetText());
-    window.draw(button_q.GetShape());
-    window.draw(button_q.GetText());
-    window.draw(button_r.GetShape());
-    window.draw(button_r.GetText());
-    window.draw(button_s.GetShape());
-    window.draw(button_s.GetText());
-    window.draw(button_t.GetShape());
-    window.draw(button_t.GetText());
-    window.draw(button_u.GetShape());
-    window.draw(button_u.GetText());
-    window.draw(button_v.GetShape());
-    window.draw(button_v.GetText());
-    window.draw(button_w.GetShape());
-    window.draw(button_w.GetText());
-    window.draw(button_x.GetShape());
-    window.draw(button_x.GetText());
-    window.draw(button_y.GetShape());
-    window.draw(button_y.GetText());
-    window.draw(button_z.GetShape());
-    window.draw(button_z.GetText());
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- */
+std::vector<myButton> CreateKeyboard() {
+  std::vector<myButton> keyboard;
+  myButton button_a = CreateButton(150, 800, "A");
+  myButton button_b = CreateButton(250, 800, "B");
+  myButton button_c = CreateButton(350, 800, "C");
+  myButton button_d = CreateButton(450, 800, "D");
+  myButton button_e = CreateButton(550, 800, "E");
+  myButton button_f = CreateButton(650, 800, "F");
+  myButton button_g = CreateButton(750, 800, "G");
+  myButton button_h = CreateButton(850, 800, "H");
+  myButton button_i = CreateButton(950, 800, "I");
+  myButton button_j = CreateButton(1050, 800, "J");
+  myButton button_k = CreateButton(1150, 800, "K");
+  myButton button_l = CreateButton(1250, 800, "L");
+  myButton button_m = CreateButton(1350, 800, "M");
+  myButton button_n = CreateButton(1450, 800, "N");
+  myButton button_o = CreateButton(1550, 800, "O");
+  myButton button_p = CreateButton(1650, 800, "P");
+  myButton button_q = CreateButton(1750, 800, "Q");
+  myButton button_r = CreateButton(550, 900, "R");
+  myButton button_s = CreateButton(650, 900, "S");
+  myButton button_t = CreateButton(750, 900, "T");
+  myButton button_u = CreateButton(850, 900, "U");
+  myButton button_v = CreateButton(950, 900, "V");
+  myButton button_w = CreateButton(1050, 900, "W");
+  myButton button_x = CreateButton(1150, 900, "X");
+  myButton button_y = CreateButton(1250, 900, "Y");
+  myButton button_z = CreateButton(1350, 900, "Z");
+  keyboard.push_back(button_a);
+  keyboard.push_back(button_b);
+  keyboard.push_back(button_c);
+  keyboard.push_back(button_d);
+  keyboard.push_back(button_e);
+  keyboard.push_back(button_f);
+  keyboard.push_back(button_g);
+  keyboard.push_back(button_h);
+  keyboard.push_back(button_i);
+  keyboard.push_back(button_j);
+  keyboard.push_back(button_k);
+  keyboard.push_back(button_l);
+  keyboard.push_back(button_m);
+  keyboard.push_back(button_n);
+  keyboard.push_back(button_o);
+  keyboard.push_back(button_p);
+  keyboard.push_back(button_r);
+  keyboard.push_back(button_q);
+  keyboard.push_back(button_s);
+  keyboard.push_back(button_t);
+  keyboard.push_back(button_u);
+  keyboard.push_back(button_v);
+  keyboard.push_back(button_w);
+  keyboard.push_back(button_x);
+  keyboard.push_back(button_y);
+  keyboard.push_back(button_z);
+  return keyboard;
+}

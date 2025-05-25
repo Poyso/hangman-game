@@ -2,7 +2,6 @@
 #define output_h
 
 #include <SFML/Graphics.hpp>
-#include <fstream>
 #include <vector>
 
 const float default_offset_value = 120;
@@ -29,9 +28,10 @@ public:
     txt.setPosition({default_pos.x + offset_text_output_x + offset_x,
                      default_pos.y + offset_text_output_y});
   }
-  void hideString() { isVisible = true; }
+  void show() { isVisible = true; }
   sf::Text GetText() { return txt; }
   sf::RectangleShape GetUnderline() { return this->underline; }
+  sf::String GetString() { return txt.getString(); }
   bool GetIsVisible() { return isVisible; }
 
 private:
@@ -42,5 +42,6 @@ private:
 void RenderTxt(sf::RenderWindow *, std::vector<Output>);
 std::vector<Output> createWordToGuess(sf::String word);
 sf::String RandomWord();
+bool word_is_revelead(std::vector<Output> word);
 
 #endif
